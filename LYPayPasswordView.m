@@ -184,6 +184,11 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
     return UIKeyboardTypeNumberPad;
 }
 
+//设置键盘安全，禁止第三方键盘
+- (BOOL)isSecureTextEntry {
+    return YES;
+}
+
 /**
  *  绘制
  */
