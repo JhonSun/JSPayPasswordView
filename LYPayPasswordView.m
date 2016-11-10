@@ -23,15 +23,15 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
-        _textStore = [NSMutableString string];
-        self.passWordNum = 6;
-        self.rectColor = [UIColor blackColor];
-        self.pointColor = [UIColor blackColor];
-        self.radius = 5;
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboarWillShow:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboarWillHide:) name:UIKeyboardWillHideNotification object:nil];
+        [self initData];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initData];
     }
     return self;
 }
@@ -41,6 +41,18 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
 }
 
 #pragma mark - private
+- (void)initData {
+    self.backgroundColor = [UIColor whiteColor];
+    _textStore = [NSMutableString string];
+    self.passWordNum = 6;
+    self.rectColor = [UIColor blackColor];
+    self.pointColor = [UIColor blackColor];
+    self.radius = 5;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboarWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboarWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
 //初始化，数字键盘“完成”按钮
 - (void)configDoneInKeyBoardButton {
     //初始化
